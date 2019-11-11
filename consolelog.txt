@@ -1,0 +1,723 @@
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains
+$ git clone git@github.com:Dimancheltv/Operations_with_commits.git
+Cloning into 'Operations_with_commits'...
+ssh: Could not resolve hostname github.com: Name or service not known
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains
+$ git clone git@github.com:Dimancheltv/Operations_with_commits.git
+Cloning into 'Operations_with_commits'...
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+warning: You appear to have cloned an empty repository.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains
+$ cd Operations_with_commits/
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ echo 1 > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ git add file && git commit -m "initial commit"
+[master (root-commit) cfd3e74] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ git checkout -b develop
+Switched to a new branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 10 > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git commit -am "change commit"
+[develop 3903cab] change commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 10+amend > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add file && git commit --amend -m "amend commit"
+[develop 57d0ef3] amend commit
+ Date: Mon Nov 11 10:34:00 2019 +0200
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+57d0ef3 (HEAD -> develop) amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 1010 > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git commit -am "change1"
+[develop c693485] change1
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 10101100 > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git commit -am "change2"
+[develop 3dddeff] change2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+3dddeff (HEAD -> develop) change2
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reset --soft c693485
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git status
+On branch develop
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file
+
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ touch newfile
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add newfile && git commit -m "change1 & soft reset"
+[develop d5033b0] change1 & soft reset
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ create mode 100644 newfile
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+d5033b0 (HEAD -> develop) change1 & soft reset
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reset --mixed c693485
+Unstaged changes after reset:
+M       file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        newfile
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 101_mixed_reset > file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add newfile && git commit -am "mixed reset"
+[develop 5ffe202] mixed reset
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ create mode 100644 newfile
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+5ffe202 (HEAD -> develop) mixed reset
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reset --hard c693485
+HEAD is now at c693485 change1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ touch file1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add file1 && git commit -m "commit_1"
+[develop 12d1ac9] commit_1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ touch file2
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add file2 && git commit -m "commit_2"
+[develop 8bdba2d] commit_2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file2
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git push origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (14/14), 1.05 KiB | 89.00 KiB/s, done.
+Total 14 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To github.com:Dimancheltv/Operations_with_commits.git
+ * [new branch]      develop -> develop
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+8bdba2d (HEAD -> develop, origin/develop) commit_2
+12d1ac9 commit_1
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reset --hard HEAD^
+HEAD is now at 12d1ac9 commit_1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git push origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+To github.com:Dimancheltv/Operations_with_commits.git
+ ! [rejected]        develop -> develop (non-fast-forward)
+error: failed to push some refs to 'git@github.com:Dimancheltv/Operations_with_commits.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git pull origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+From github.com:Dimancheltv/Operations_with_commits
+ * branch            develop    -> FETCH_HEAD
+Updating 12d1ac9..8bdba2d
+Fast-forward
+ file2 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file2
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+8bdba2d (HEAD -> develop, origin/develop) commit_2
+12d1ac9 commit_1
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reset --hard 12d1ac9
+HEAD is now at 12d1ac9 commit_1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git push --force-with-lease
+fatal: The current branch develop has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin develop
+
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git push --force-with-lease origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+Total 0 (delta 0), reused 0 (delta 0)
+To github.com:Dimancheltv/Operations_with_commits.git
+ + 8bdba2d...12d1ac9 develop -> develop (forced update)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reflog
+12d1ac9 (HEAD -> develop, origin/develop) HEAD@{0}: reset: moving to 12d1ac9
+8bdba2d HEAD@{1}: pull origin develop: Fast-forward
+12d1ac9 (HEAD -> develop, origin/develop) HEAD@{2}: reset: moving to HEAD^
+8bdba2d HEAD@{3}: commit: commit_2
+12d1ac9 (HEAD -> develop, origin/develop) HEAD@{4}: commit: commit_1
+c693485 HEAD@{5}: reset: moving to c693485
+5ffe202 HEAD@{6}: commit: mixed reset
+c693485 HEAD@{7}: reset: moving to c693485
+d5033b0 HEAD@{8}: commit: change1 & soft reset
+c693485 HEAD@{9}: reset: moving to c693485
+3dddeff HEAD@{10}: commit: change2
+c693485 HEAD@{11}: commit: change1
+57d0ef3 HEAD@{12}: commit (amend): amend commit
+3903cab HEAD@{13}: commit: change commit
+cfd3e74 (master) HEAD@{14}: checkout: moving from master to develop
+cfd3e74 (master) HEAD@{15}: commit (initial): initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+12d1ac9 (HEAD -> develop, origin/develop) commit_1
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log —pretty=oneline
+fatal: ambiguous argument '—pretty=oneline': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --pretty=oneline
+12d1ac9269b468fa908ee9e521ea852ffe833186 (HEAD -> develop, origin/develop) commit_1
+c693485f66dd3bff7bf217271ca501c5b4d3d05e change1
+57d0ef328177e8a75c4cecb113a9f76be1f46be5 amend commit
+cfd3e7455b2e1b71394683f91e132b74545ad521 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --all --graph --decorate --oneline --simplify-by-decoration
+* 12d1ac9 (HEAD -> develop, origin/develop) commit_1
+* cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --all --graph --decorate --oneline --simplify-by-decoration
+* 12d1ac9 (HEAD -> develop, origin/develop) commit_1
+* cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout master
+Switched to branch 'master'
+Your branch is based on 'origin/master', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git commit --allow-empty -m "Commit1"
+[hotfix 6fc0985] Commit1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git commit --allow-empty -m "Commit2"
+[hotfix 65f1201] Commit2
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git commit --allow-empty -m "Commit3"
+[hotfix 5cd219b] Commit3
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git cherry-pick 6fc0985
+The previous cherry-pick is now empty, possibly due to conflict resolution.
+If you wish to commit it anyway, use:
+
+    git commit --allow-empty
+
+Otherwise, please use 'git cherry-pick --skip'
+On branch develop
+You are currently cherry-picking commit 6fc0985.
+
+nothing to commit, working tree clean
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop|CHERRY-PICKING)
+$ git commit --allow-empty
+[develop 7f923fe] Cherry-pick Commit1
+ Date: Mon Nov 11 13:21:47 2019 +0200
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout hotfix
+Switched to branch 'hotfix'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git touch file_ab203
+git: 'touch' is not a git command. See 'git --help'.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ touch file_ab203
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git add file_ab203
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git commit -m "add file"
+[hotfix edcf9eb] add file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_ab203
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (hotfix)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git cherry-pick edcf9eb
+[develop 1d7465d] add file
+ Date: Mon Nov 11 13:25:04 2019 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_ab203
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout -b another
+Switched to a new branch 'another'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ touch file_qw12
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ git add file_qw12
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ git commit -m "add file"
+[another fbf2f23] add file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_qw12
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ touch file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ git add file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ git commit -m "add next file"
+[another c1136c1] add next file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (another)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git cherry-pick  develop..another
+[develop ae1afbb] add file
+ Date: Mon Nov 11 13:32:11 2019 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_qw12
+[develop 94a0b30] add next file
+ Date: Mon Nov 11 13:32:45 2019 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+94a0b30 (HEAD -> develop) add next file
+ae1afbb add file
+1d7465d add file
+7f923fe Cherry-pick Commit1
+12d1ac9 (origin/develop) commit_1
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git branch
+  another
+* develop
+  hotfix
+  master
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git reflog
+94a0b30 (HEAD -> develop) HEAD@{0}: cherry-pick: add next file
+ae1afbb HEAD@{1}: cherry-pick: add file
+1d7465d HEAD@{2}: checkout: moving from another to develop
+c1136c1 (another) HEAD@{3}: commit: add next file
+fbf2f23 HEAD@{4}: commit: add file
+1d7465d HEAD@{5}: checkout: moving from develop to another
+1d7465d HEAD@{6}: cherry-pick: add file
+7f923fe HEAD@{7}: checkout: moving from hotfix to develop
+edcf9eb (hotfix) HEAD@{8}: commit: add file
+5cd219b HEAD@{9}: checkout: moving from develop to hotfix
+7f923fe HEAD@{10}: commit (cherry-pick): Cherry-pick Commit1
+12d1ac9 (origin/develop) HEAD@{11}: checkout: moving from hotfix to develop
+5cd219b HEAD@{12}: commit: Commit3
+65f1201 HEAD@{13}: commit: Commit2
+6fc0985 HEAD@{14}: commit: Commit1
+cfd3e74 (master) HEAD@{15}: checkout: moving from master to hotfix
+cfd3e74 (master) HEAD@{16}: checkout: moving from develop to master
+12d1ac9 (origin/develop) HEAD@{17}: reset: moving to 12d1ac9
+8bdba2d HEAD@{18}: pull origin develop: Fast-forward
+12d1ac9 (origin/develop) HEAD@{19}: reset: moving to HEAD^
+8bdba2d HEAD@{20}: commit: commit_2
+12d1ac9 (origin/develop) HEAD@{21}: commit: commit_1
+c693485 HEAD@{22}: reset: moving to c693485
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git merge another
+Merge made by the 'recursive' strategy.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git log --oneline
+61c1c7f (HEAD -> develop) Merge branch 'another' into develop
+94a0b30 add next file
+ae1afbb add file
+c1136c1 (another) add next file
+fbf2f23 add file
+1d7465d add file
+7f923fe Cherry-pick Commit1
+12d1ac9 (origin/develop) commit_1
+c693485 change1
+57d0ef3 amend commit
+cfd3e74 (master) initial commit
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout -b feature_010
+Switched to a new branch 'feature_010'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ echo 111 > file_q
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git add fille_q && git commit -m "add file"
+fatal: pathspec 'fille_q' did not match any files
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git add file_q && git commit -m "add file"
+[feature_010 7d02f6b] add file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_q
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ echo 111 > file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git add file_w && git commit -m "add next file"
+[feature_010 4a0fbca] add next file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ echo 111 > file_e
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git add file_e && git commit -m "and add next file"
+[feature_010 d6bab5a] and add next file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_e
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 12323 > file_13321
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add file_13321 && git commit -m "add next feature"
+[develop cddf602] add next feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_13321
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout feature_010
+Switched to branch 'feature_010'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git rebase develop
+First, rewinding head to replay your work on top of it...
+Applying: add file
+Applying: add next file
+Applying: and add next file
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ ls
+file  file_13321  file_ab203  file_qw12  file_trw17  file1
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ echo 123213 > file_qw12
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ git commit -am "change source"
+[develop b9e29cf] change source
+ 1 file changed, 1 insertion(+)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ echo 123213 > file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ git commit -am "change source in next file"
+[develop dda7246] change source in next file
+ 1 file changed, 1 insertion(+)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ git push origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (18/18), 1.70 KiB | 193.00 KiB/s, done.
+Total 18 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas: 100% (8/8), done.
+To github.com:Dimancheltv/Operations_with_commits.git
+   12d1ac9..dda7246  develop -> develop
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop
+$ git checkout feature_010
+Switched to branch 'feature_010'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ ls
+file  file_13321  file_ab203  file_e  file_q  file_qw12  file_trw17  file_w  fil
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ echo 13123 > file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git commit -am "some change"
+[feature_010 4178114] some change
+ 1 file changed, 1 insertion(+)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git pull --rebase origin develop
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+From github.com:Dimancheltv/Operations_with_commits
+ * branch            develop    -> FETCH_HEAD
+First, rewinding head to replay your work on top of it...
+Applying: add file
+Applying: add next file
+Applying: and add next file
+Applying: some change
+Using index info to reconstruct a base tree...
+M       file_trw17
+Falling back to patching base and 3-way merge...
+Auto-merging file_trw17
+CONFLICT (content): Merge conflict in file_trw17
+error: Failed to merge in the changes.
+hint: Use 'git am --show-current-patch' to see the failed patch
+Patch failed at 0004 some change
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort"
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git add file_trw17
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ gut rebase --continue
+bash: gut: command not found
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git rebase --continue
+Applying: some change
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git blame file_trw17
+dda72468 (Brave_Engineer 2019-11-11 14:03:22 +0200 1) 123213
+6f113142 (Brave_Engineer 2019-11-11 14:05:35 +0200 2) 13123
+6f113142 (Brave_Engineer 2019-11-11 14:05:35 +0200 3) some change
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git blame file_qw12
+b9e29cf9 (Brave_Engineer 2019-11-11 14:02:19 +0200 1) 123213
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature
+$ git branch
+  another
+  develop
+* feature_010
+  hotfix
+  master
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ echo 00000 > file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git commit -am "edit file"
+[feature_010 1d2f169] edit file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (feature_010)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ cat file_w
+cat: file_w: No such file or directory
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ echo 000001 > file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git add file_w && git commit -m "edit file"
+[develop da1f10c] edit file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git cherry-pick 1d2f169
+error: could not apply 1d2f169... edit file
+hint: after resolving the conflicts, mark the corrected paths
+hint: with 'git add <paths>' or 'git rm <paths>'
+hint: and commit the result with 'git commit'
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop|CHERRY-PICKING)
+$ git add file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop|CHERRY-PICKING)
+$ git commit
+[develop 938d00c] resolve conflict cherry-pick
+ Date: Mon Nov 11 14:17:28 2019 +0200
+ 1 file changed, 2 insertions(+)
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git push --all
+load pubkey "/c/Users/Dell/.ssh/id_rsa": invalid format
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (24/24), 2.05 KiB | 175.00 KiB/s, done.
+Total 24 (delta 10), reused 0 (delta 0)
+remote: Resolving deltas: 100% (10/10), completed with 1 local object.
+To github.com:Dimancheltv/Operations_with_commits.git
+   dda7246..938d00c  develop -> develop
+ * [new branch]      another -> another
+ * [new branch]      feature_010 -> feature_010
+ * [new branch]      hotfix -> hotfix
+ * [new branch]      master -> master
+ 
+ Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (develop)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ git merge develop
+Updating cfd3e74..938d00c
+Fast-forward
+ file       | 2 +-
+ file1      | 0
+ file_13321 | 1 +
+ file_ab203 | 0
+ file_qw12  | 1 +
+ file_trw17 | 1 +
+ file_w     | 3 +++
+ 7 files changed, 7 insertions(+), 1 deletion(-)
+ create mode 100644 file1
+ create mode 100644 file_13321
+ create mode 100644 file_ab203
+ create mode 100644 file_qw12
+ create mode 100644 file_trw17
+ create mode 100644 file_w
+
+Dell@DESKTOP-O9I6UDJ MINGW64 /c/OSPanel/domains/Operations_with_commits (master)
+$ touch consolelog.txt
+
